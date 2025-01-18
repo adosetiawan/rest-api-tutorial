@@ -25,7 +25,8 @@ exports.validRefreshNeeded = (req, res, next) => {
 
 exports.validJWTNeeded = (req, res, next) => {
     if (req.headers['authorization']) {
-        try {
+        // try {
+        // console.log(req.headers['authorization']);
             let authorization = req.headers['authorization'].split(' ');
             if (authorization[0] !== 'Bearer') {
                 return res.status(401).send();
@@ -34,9 +35,9 @@ exports.validJWTNeeded = (req, res, next) => {
                 return next();
             }
 
-        } catch (err) {
-            return res.status(403).send();
-        }
+        // } catch (err) {
+        //     return res.status(403).send();
+        // }
     } else {
         return res.status(401).send();
     }
